@@ -1,0 +1,97 @@
+﻿<Window x:Class="CarRental_CP317.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarRental_CP317"
+        mc:Ignorable="d"
+        Title="Car Rental Login" Height="450" Width="350" Background="#FF1A1A1A"
+        ResizeMode="CanMinimize">
+
+    <Window.Resources>
+        <!-- Reusable rounded button style. Change CornerRadius to adjust roundness -->
+        <Style x:Key="RoundedButton" TargetType="Button">
+            <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+            <Setter Property="Background" Value="#FFE05953"/>
+            <Setter Property="BorderBrush" Value="#FFB34944"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="0"
+                        SnapsToDevicePixels="True">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      RecognizesAccessKey="True"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter TargetName="border" Property="Opacity" Value="0.9"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="RenderTransformOrigin" Value="0.5, 0.5"/>
+                                <Setter TargetName="border" Property="RenderTransform">
+                                    <Setter.Value>
+                                        <ScaleTransform ScaleX="0.95" ScaleY="0.95" CenterX="50" CenterY="20"/>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" Value="0.5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="NoButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                        <ContentPresenter />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Canvas HorizontalAlignment="Center" Height="450" VerticalAlignment="Center" Width="350">
+            <Canvas x:Name="LoginCanvas" Height="328" Canvas.Left="42" Canvas.Top="49" Width="266" HorizontalAlignment="Center" VerticalAlignment="Top">
+                <Label x:Name="TitleLabel" Content="Log In" FontSize="36" HorizontalAlignment="Left" Height="62" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="272" FontWeight="Bold" Canvas.Left="-2" VerticalAlignment="Top" Foreground="White" Background="{x:Null}"/>
+                <Label x:Name="EmailLabel" Content="Email" FontSize="14" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Width="74" Canvas.Left="18" Canvas.Top="88" VerticalAlignment="Top" Foreground="White" />
+                <TextBox x:Name="EmailTextBox" TextWrapping="NoWrap" HorizontalAlignment="Left" FontSize="14" Height="32" Text="" VerticalContentAlignment="Center" Width="230" Canvas.Left="18" Canvas.Top="117" VerticalAlignment="Top" BorderBrush="#FFE05953" Foreground="White" Background="{x:Null}" CaretBrush="White"/>
+                <Label x:Name="PasswordLabel" Content="Password" FontSize="14" HorizontalContentAlignment="Left" Width="74" Canvas.Left="18" Canvas.Top="166" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" />
+                <PasswordBox x:Name="PasswordTextBox" FontSize="14" Height="32" VerticalContentAlignment="Center" Width="230" Canvas.Left="18" Canvas.Top="195" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="#FFE05953" Background="{x:Null}" Foreground="White" CaretBrush="White"/>
+                <Button Style="{StaticResource NoButtonStyle}" HorizontalContentAlignment="Center" x:Name="NoAccountButton" Content="I don't have an account." FontSize="13" Height="26" Canvas.Left="66" Canvas.Top="242" Width="136" HorizontalAlignment="Left" VerticalAlignment="Top" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF0378FB" Click="NoAccountButton_Click"/>
+                <Button x:Name="LoginButton" Style="{StaticResource RoundedButton}" Content="Login" FontWeight="Bold" FontSize="14" Height="32" Canvas.Left="82" Canvas.Top="299" Width="104" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFE05953" BorderBrush="#FFB34944" Foreground="White" Click="LoginButton_Click"/>
+            </Canvas>
+            <Canvas x:Name="SignupCanvas" Panel.ZIndex="5" Height="349" Canvas.Left="42" Canvas.Top="49" Width="266" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Hidden">
+                <Label Content="Sign Up" FontSize="36" HorizontalAlignment="Center" Height="62" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="272" FontWeight="Bold" Canvas.Left="-2" VerticalAlignment="Center" Foreground="White" Background="{x:Null}"/>
+                <Label x:Name="EmailLabelSignup" Content="Email" FontSize="14" HorizontalAlignment="Center" HorizontalContentAlignment="Left" Width="74" Canvas.Left="18" Canvas.Top="77" VerticalAlignment="Top" Foreground="White" />
+                <TextBox x:Name="EmailTextBoxSignup" TextWrapping="NoWrap" HorizontalAlignment="Center" FontSize="14" Height="32" Text="" VerticalContentAlignment="Center" Width="230" Canvas.Left="18" Canvas.Top="106" VerticalAlignment="Top" BorderBrush="#FFE05953" Foreground="White" Background="{x:Null}" CaretBrush="White"/>
+                <Label x:Name="PasswordLabelSignup" Content="Password" FontSize="14" HorizontalContentAlignment="Left" Width="74" Canvas.Left="18" Canvas.Top="155" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" />
+                <PasswordBox x:Name="PasswordTextBoxSignup" FontSize="14" Height="32" VerticalContentAlignment="Center" Width="230" Canvas.Left="18" Canvas.Top="184" HorizontalAlignment="Center" VerticalAlignment="Top" BorderBrush="#FFE05953" Background="{x:Null}" Foreground="White" CaretBrush="White"/>
+                <Button x:Name="SignupButton" Style="{StaticResource RoundedButton}" Content="Signup" FontWeight="Bold" FontSize="14" Height="32" Canvas.Left="144" Canvas.Top="317" Width="104" HorizontalAlignment="Left" VerticalAlignment="Top" Background="#FFE05953" BorderBrush="#FFB34944" Foreground="White" Click="SignupButton_Click"/>
+                <Label x:Name="ConfirmPasswordLabelSignup" Content="Confirm Password" FontSize="14" HorizontalContentAlignment="Left" Width="140" Canvas.Left="18" Canvas.Top="233" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                <PasswordBox x:Name="PasswordConfirmTextBoxSignup" FontSize="14" Height="32" VerticalContentAlignment="Center" Width="230" Canvas.Left="18" Canvas.Top="262" BorderBrush="#FFE05953" Background="{x:Null}" Foreground="White" CaretBrush="White" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <Button x:Name="BackButtonSignup" Style="{StaticResource RoundedButton}" Content="Back" FontWeight="Bold" FontSize="14" Height="32" Canvas.Left="18" Canvas.Top="317" Width="104" Background="#FFE05953" BorderBrush="#FFB34944" Foreground="White" Click="BackButtonSignup_Click" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </Canvas>
+        </Canvas>
+
+    </Grid>
+</Window>
