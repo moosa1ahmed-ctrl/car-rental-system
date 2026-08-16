@@ -11,6 +11,16 @@ A desktop car rental management application built for CP317 (Software Engineerin
 - Kritika Kamath (Developer)
 - Shalin Panjwani (Developer)
 
+## Table of Contents
+- [Team](#team-28)
+- [Stack](#stack)
+- [Repo Structure](#repo-structure)
+- [Environment Configuration](#environment-configuration)
+- [Database Schema Overview](#database-schema-overview)
+- [App Flow](#app-flow)
+- [Running Locally](#running-locally)
+- [Project Docs](#project-docs)
+
 ## Stack
 - C# / .NET (net9.0-windows)
 - WPF (Windows Presentation Foundation) for the UI
